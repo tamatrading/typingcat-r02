@@ -1,48 +1,101 @@
 import { romajiMap } from '../constants/gameConstants';
 import { DecomposedChar } from '../types/game';
 
+// 促音（っ）の次の文字のローマ字の最初の子音を取得（配列対応）
+function getFirstConsonant(romaji: string[]): string {
+  // 最初のローマ字表記の最初の子音を取得
+  const firstRomaji = romaji[0];
+  const consonantMatch = firstRomaji.match(/^[^AIUEO]/);
+  return consonantMatch ? consonantMatch[0] : '';
+}
+
 // 文字列を一文字ずつ分解し、ローマ字情報を付加する
 export function decomposeText(text: string): DecomposedChar[] {
   const chars: DecomposedChar[] = [];
   let i = 0;
   
   while (i < text.length) {
-    let char = text[i];
-    let nextChar = text[i + 1];
-    
-    // 小文字（ょ、ゅ、ゃ）のチェック
-    if (nextChar && isSmallChar(nextChar)) {
-      char = char + nextChar;
-      i += 2;
-    }
+    const char = text[i];
+    const nextChar = text[i + 1];
+    const nextNextChar = text[i + 2];
+
     // 促音（っ）のチェック
-    else if (char === 'っ' && nextChar) {
-      // 促音の場合は次の文字の最初の子音を重ねる
-      const nextRomaji = getRomajiForChar(nextChar)[0];
-      const firstConsonant = nextRomaji[0];
+    if (char === 'っ' && nextChar) {
+      // 次の文字が拗音の場合（例：しゃ、しゅ、しょ）
+      if (nextNextChar && isSmallChar(nextNextChar)) {
+        const combo = nextChar + nextNextChar;
+        const romajiOptions = romajiMap[combo as keyof typeof romajiMap];
+        if (romajiOptions) {
+          const baseRomaji = combo === 'しゅ' ? ['SSHU', 'SSYU'] : [romajiOptions[0]];
+          const consonant = getFirstConsonant(baseRomaji);
+          chars.push({
+            char: char + nextChar + nextNextChar,
+            romaji: baseRomaji,
+            isCompleted: false
+          });
+          i += 3;
+          continue;
+        }
+      }
+
+      // 通常の文字の場合
+      const romajiOptions = romajiMap[nextChar as keyof typeof romajiMap];
+      if (romajiOptions) {
+        const baseRomaji = romajiOptions[0];
+        const consonant = getFirstConsonant(baseRomaji);
+        chars.push({
+          char: char + nextChar,
+          romaji: [consonant + baseRomaji],
+          isCompleted: false
+        });
+        i += 2;
+        continue;
+      }
+    } else if (nextChar && isSmallChar(nextChar)) {
+      const combo = char + nextChar;
+      if (romajiMap[combo as keyof typeof romajiMap]) {
+        chars.push({
+          char: combo,
+          romaji: romajiMap[combo as keyof typeof romajiMap],
+          isCompleted: false
+        });
+        i += 2;
+        continue;
+      }
+    }
+    
+    // 特殊な文字の組み合わせ（ふぁ、ふぃ、ふぇ、ふぉ、しぇなど）
+    else if (nextChar && romajiMap[(char + nextChar) as keyof typeof romajiMap]) {
       chars.push({
-        char: 'っ',
-        romaji: [firstConsonant],
+        char: char + nextChar,
+        romaji: romajiMap[(char + nextChar) as keyof typeof romajiMap],
         isCompleted: false
       });
+      i += 2;
+      continue;
+    }
+    // 単一文字の処理
+    else {
+      if (romajiMap[char as keyof typeof romajiMap]) {
+        chars.push({
+          char: char,
+          romaji: romajiMap[char as keyof typeof romajiMap],
+          isCompleted: false
+        });
+      } else {
+        chars.push({
+          char: char,
+          romaji: [char],
+          isCompleted: false
+        });
+      }
       i++;
       continue;
     }
-    else {
-      i++;
-    }
-    
-    chars.push({
-      char: char,
-      romaji: getRomajiForChar(char),
-      isCompleted: false
-    });
   }
   
   return chars;
 }
-
-// 小文字（ょ、ゅ、ゃ）かどうかをチェック
 function isSmallChar(char: string): boolean {
   return ['ょ', 'ゅ', 'ゃ'].includes(char);
 }
