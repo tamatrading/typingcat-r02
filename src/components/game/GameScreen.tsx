@@ -85,11 +85,11 @@ const GameScreen: React.FC<GameScreenProps> = ({
     >
       {/* Start Screen */}
       {gameState === 'start' && (
-        <div className="absolute inset-0 bg-gradient-radial from-indigo-500 via-purple-600 to-blue-800 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-radial from-blue-900 via-green-800 to-green-900 overflow-hidden">
           <div className="relative z-10 flex flex-col items-center justify-center h-full">
             <div className="text-center mb-8">
               <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-pink-300 to-cyan-300 animate-gradient-x -mb-2 font-cute">
-                タイピングにゃんこ
+                タイピングたんご！
               </h2>
               <button
                 onClick={resetGame}
