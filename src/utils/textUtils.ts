@@ -24,13 +24,12 @@ export function decomposeText(text: string): DecomposedChar[] {
       // 次の文字が拗音の場合（例：しゃ、しゅ、しょ）
       if (nextNextChar && isSmallChar(nextNextChar)) {
         const combo = nextChar + nextNextChar;
-        const romajiOptions = romajiMap[combo as keyof typeof romajiMap];
+        const fullCombo = 'っ' + combo;
+        const romajiOptions = romajiMap[fullCombo as keyof typeof romajiMap];
         if (romajiOptions) {
-          const baseRomaji = combo === 'しゅ' ? ['SSHU', 'SSYU'] : [romajiOptions[0]];
-          const consonant = getFirstConsonant(baseRomaji);
           chars.push({
-            char: char + nextChar + nextNextChar,
-            romaji: baseRomaji,
+            char: fullCombo,
+            romaji: romajiOptions,
             isCompleted: false
           });
           i += 3;
