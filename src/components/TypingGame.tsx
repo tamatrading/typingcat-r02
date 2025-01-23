@@ -4,6 +4,7 @@ import KeyboardHands from './KeyboardHands';
 import KeyboardLayout from './KeyboardLayout';
 import GameHeader from './game/GameHeader';
 import GameScreen from './game/GameScreen';
+import HelpButton from './HelpButton';
 import { GameSettings, ScorePopup, CurrentWord, Particle, DecomposedChar } from '../types/game';
 import {
   stageBackgrounds,
@@ -22,9 +23,10 @@ import {
 interface Props {
   settings: GameSettings;
   onAdminRequest: () => void;
+  onHelpRequest: () => void;
 }
 
-const TypingGame: React.FC<Props> = ({ settings, onAdminRequest }) => {
+const TypingGame: React.FC<Props> = ({ settings, onAdminRequest, onHelpRequest }) => {
   const [stage, setStage] = useState(settings.selectedStages[0]);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
@@ -777,6 +779,7 @@ const TypingGame: React.FC<Props> = ({ settings, onAdminRequest }) => {
           </div>
         )}
       </div>
+      <HelpButton onClick={onHelpRequest} />
     </div>
   );
 };

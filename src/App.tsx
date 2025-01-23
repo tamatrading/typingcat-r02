@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import TypingGame from './components/TypingGame';
 import AdminScreen from './components/AdminScreen';
+import HelpButton from './components/HelpButton';
+import HelpModal from './components/HelpModal';
 
 const ASPECT_RATIO = 4 / 3; // ゲームの縦横比を固定
 
 function App() {
   const [showAdmin, setShowAdmin] = useState(false);
+  const [showHelp, setShowHelp] = useState(false);
   const [gameSettings, setGameSettings] = useState({
     selectedStages: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33],
     speed: 2,
@@ -68,13 +71,17 @@ function App() {
       currentSettings={gameSettings}
     />
   ) : (
-    <div ref={containerRef} className="w-full h-screen flex items-center justify-center bg-gray-900 overflow-hidden">
-      <div style={{ transform: `scale(${scale})`, transformOrigin: 'center center' }}>
-        <TypingGame
-          settings={gameSettings}
-          onAdminRequest={() => setShowAdmin(true)}
-        />
+    <div className="relative w-full h-screen bg-gray-900">
+      <div ref={containerRef} className="w-full h-full flex items-center justify-center overflow-hidden">
+        <div style={{ transform: `scale(${scale})`, transformOrigin: 'center center' }}>
+          <TypingGame
+            settings={gameSettings}
+            onAdminRequest={() => setShowAdmin(true)}
+            onHelpRequest={() => setShowHelp(true)}
+          />
+        </div>
       </div>
+      <HelpModal isOpen={showHelp} onClose={() => setShowHelp(false)} />
     </div>
   );
 }
