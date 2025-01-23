@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tango01.manabi-time.com/sitemap.xml
