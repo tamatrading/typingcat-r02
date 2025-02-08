@@ -9,6 +9,7 @@ const ASPECT_RATIO = 4 / 3; // ゲームの縦横比を固定
 function App() {
   const [showAdmin, setShowAdmin] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
+  const [currentGameState, setCurrentGameState] = useState('start');
   const [gameSettings, setGameSettings] = useState({
     selectedStages: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33],
     speed: 2,
@@ -78,7 +79,11 @@ function App() {
             settings={gameSettings}
             onAdminRequest={() => setShowAdmin(true)}
             onHelpRequest={() => setShowHelp(true)}
+            onGameStateChange={setCurrentGameState}
           />
+          {currentGameState !== 'countdown' && currentGameState !== 'playing' && (
+            <HelpButton onClick={() => setShowHelp(true)} />
+          )}
         </div>
       </div>
       <HelpModal isOpen={showHelp} onClose={() => setShowHelp(false)} />

@@ -24,9 +24,10 @@ interface Props {
   settings: GameSettings;
   onAdminRequest: () => void;
   onHelpRequest: () => void;
+  onGameStateChange: (state: string) => void;
 }
 
-const TypingGame: React.FC<Props> = ({ settings, onAdminRequest, onHelpRequest }) => {
+const TypingGame: React.FC<Props> = ({ settings, onAdminRequest, onHelpRequest, onGameStateChange }) => {
   const [stage, setStage] = useState(settings.selectedStages[0]);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
@@ -79,6 +80,7 @@ const TypingGame: React.FC<Props> = ({ settings, onAdminRequest, onHelpRequest }
 
   useEffect(() => {
     gameStateRef.current = gameState;
+    onGameStateChange(gameState);
   }, [gameState]);
 
   useEffect(() => {
@@ -779,7 +781,6 @@ const TypingGame: React.FC<Props> = ({ settings, onAdminRequest, onHelpRequest }
           </div>
         )}
       </div>
-      <HelpButton onClick={onHelpRequest} />
     </div>
   );
 };
