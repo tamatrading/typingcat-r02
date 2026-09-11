@@ -1,9 +1,9 @@
 // ゲーム内で使用する画像のパス
 const gameImages = [
-  '/images/cat1.png',  // スタート画面
-  '/images/cat4.png',  // ゲームオーバー
-  '/images/cat3.png',  // ステージクリア
-  '/images/cat2.png',  // ゲームクリア
+  `${import.meta.env.BASE_URL}images/cat1.png`,  // スタート画面
+  `${import.meta.env.BASE_URL}images/cat4.png`,  // ゲームオーバー
+  `${import.meta.env.BASE_URL}images/cat3.png`,  // ステージクリア
+  `${import.meta.env.BASE_URL}images/cat2.png`,  // ゲームクリア
 ];
 
 export const preloadGameImages = (): Promise<void[]> => {
