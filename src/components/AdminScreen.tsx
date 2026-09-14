@@ -11,6 +11,7 @@ interface AdminScreenProps {
     showHands: boolean;
     windowSize: number;
     uppercaseRoma: boolean;
+    showRomajiHint: boolean;
   }) => void;
   currentSettings: {
     selectedStages: number[];
@@ -20,6 +21,7 @@ interface AdminScreenProps {
     showHands: boolean;
     windowSize: number;
     uppercaseRoma: boolean;
+    showRomajiHint: boolean;
   };
 }
 
@@ -57,6 +59,7 @@ const AdminScreen: React.FC<AdminScreenProps> = ({
   const [showHands, setShowHands] = useState(currentSettings.showHands);
   const [windowSize, setWindowSize] = useState(currentSettings.windowSize);
   const [uppercaseRoma, setUppercaseRoma] = useState(currentSettings.uppercaseRoma);
+  const [showRomajiHint, setShowRomajiHint] = useState(currentSettings.showRomajiHint);
   const [showWarning, setShowWarning] = useState(false);
 
   const updateSettings = useCallback(() => {
@@ -69,9 +72,9 @@ const AdminScreen: React.FC<AdminScreenProps> = ({
     ).sort((a, b) => a - b);
 
     if (currentStages.length > 0) {
-      onSettingsChange({ selectedStages: currentStages, speed, isRandomMode, numStages, showHands, windowSize, uppercaseRoma });
+      onSettingsChange({ selectedStages: currentStages, speed, isRandomMode, numStages, showHands, windowSize, uppercaseRoma, showRomajiHint });
     }
-  }, [selectedGroups, speed, isRandomMode, numStages, showHands, windowSize, uppercaseRoma, onSettingsChange]);
+  }, [selectedGroups, speed, isRandomMode, numStages, showHands, windowSize, uppercaseRoma, showRomajiHint, onSettingsChange]);
 
   useEffect(() => {
     updateSettings();
@@ -117,6 +120,10 @@ const AdminScreen: React.FC<AdminScreenProps> = ({
 
   const toggleUppercaseRoma = () => {
     setUppercaseRoma((prev) => !prev);
+  };
+
+  const toggleShowRomajiHint = () => {
+    setShowRomajiHint((prev) => !prev);
   };
 
   const handleBack = () => {
@@ -270,6 +277,23 @@ const AdminScreen: React.FC<AdminScreenProps> = ({
           </div>
 
           <div>
+            <h3 className="text-xl font-semibold mb-4">ローマ字ヒントの表示</h3>
+            <button
+              onClick={toggleShowRomajiHint}
+              className={`flex items-center space-x-2 px-4 py-2 rounded-lg border-2 transition-all ${
+                showRomajiHint
+                  ? 'border-blue-500 bg-blue-50 text-blue-700'
+                  : 'border-gray-200 hover:border-blue-300 hover:bg-blue-50'
+              }`}
+            >
+              <span>ローマ字ヒント {showRomajiHint ? 'ON' : 'OFF（スコア1.5倍）'}</span>
+              {showRomajiHint && (
+                <Check className="w-4 h-4 text-blue-500 ml-2" />
+              )}
+            </button>
+          </div>
+
+          <div>
             <h3 className="text-xl font-semibold mb-4">タイムアウト速度（1:ゆっくり 5:はやい）</h3>
             <div className="flex items-center space-x-4">
               {[1, 2, 3, 4, 5].map((value) => (
@@ -325,7 +349,8 @@ const AdminScreen: React.FC<AdminScreenProps> = ({
             </p>
             <p className="mb-1">タイムアウト速度: {speed}</p>
             <p className="mb-1">ウィンドウ倍率: {windowSize}</p>
-            <p>ローマ字の表示: {uppercaseRoma ? '大文字' : '小文字'}</p>
+            <p className="mb-1">ローマ字の表示: {uppercaseRoma ? '大文字' : '小文字'}</p>
+            <p>ローマ字ヒント: {showRomajiHint ? '表示' : '非表示（スコア1.5倍）'}</p>
           </div>
         </div>
       </div>

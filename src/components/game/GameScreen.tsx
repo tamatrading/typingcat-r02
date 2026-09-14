@@ -29,6 +29,7 @@ interface GameScreenProps {
     windowSize: number;
     showHands: boolean;
     uppercaseRoma: boolean;
+    showRomajiHint: boolean;
   };
   currentBackground: string;
   stageBackgrounds: Record<number, string>;
@@ -305,7 +306,7 @@ const GameScreen: React.FC<GameScreenProps> = ({
                 ))}
               </div>
             )}
-            {currentWord && !showSuccessEffect && currentCharIndex < decomposedChars.length && (
+            {settings.showRomajiHint && currentWord && !showSuccessEffect && currentCharIndex < decomposedChars.length && (
               <div className="text-gray-200 text-xl mt-4">
                 {decomposedChars[currentCharIndex].romaji.map((hint, index) => (
                   <div key={index}>

@@ -17,7 +17,8 @@ function App() {
     numStages: 3,
     showHands: true,
     windowSize: 1,
-    uppercaseRoma: true
+    uppercaseRoma: true,
+    showRomajiHint: true
   });
 
   const containerRef = useRef<HTMLDivElement>(null);

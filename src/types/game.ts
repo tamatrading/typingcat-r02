@@ -6,6 +6,7 @@ export interface GameSettings {
   showHands: boolean;
   windowSize: number;
   uppercaseRoma: boolean;
+  showRomajiHint: boolean;
 }
 
 export interface ScorePopup {

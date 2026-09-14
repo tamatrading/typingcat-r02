@@ -332,14 +332,16 @@ const TypingGame: React.FC<Props> = ({ settings, onAdminRequest, onHelpRequest, 
       const minScore = 1;
       const maxTime = QUESTION_TIMEOUT;
 
-      return Math.max(
+      const baseScore = Math.max(
         minScore,
         Math.ceil(
           maxScore * (1 - elapsedTime / maxTime) * (1 + speedMultiplier * 0.2)
         )
       );
+
+      return settings.showRomajiHint ? baseScore : Math.ceil(baseScore * 1.5);
     },
-    [speedMultiplier, QUESTION_TIMEOUT]
+    [speedMultiplier, QUESTION_TIMEOUT, settings.showRomajiHint]
   );
 
   const createParticles = useCallback((x: number, y: number) => {
