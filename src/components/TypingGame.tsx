@@ -776,6 +776,7 @@ const TypingGame: React.FC<Props> = ({ settings, onAdminRequest, onHelpRequest, 
                 activeKey={decomposedChars[currentCharIndex]?.char || ''}
                 currentInput={currentRomajiInput}
                 showSuccessEffect={showSuccessEffect}
+                uppercaseRoma={settings.uppercaseRoma}
               />
             </div>
           </div>

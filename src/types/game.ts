@@ -5,6 +5,7 @@ export interface GameSettings {
   numStages: number;
   showHands: boolean;
   windowSize: number;
+  uppercaseRoma: boolean;
 }
 
 export interface ScorePopup {

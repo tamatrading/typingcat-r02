@@ -7,6 +7,7 @@ interface KeyboardLayoutProps {
   activeKey: string;
   currentInput: string;
   showSuccessEffect: boolean;
+  uppercaseRoma: boolean;
 }
 
 const getNextExpectedKey = (word: string, currentInput: string): string => {
@@ -32,7 +33,7 @@ const getNextExpectedKey = (word: string, currentInput: string): string => {
   return matchingPattern[currentInput.length] || '';
 }
 
-const KeyboardLayout: React.FC<KeyboardLayoutProps> = ({ activeKey, currentInput, showSuccessEffect }) => {
+const KeyboardLayout: React.FC<KeyboardLayoutProps> = ({ activeKey, currentInput, showSuccessEffect, uppercaseRoma }) => {
   const keyRows = [
     ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '^'],
     ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '@', '['],
@@ -72,7 +73,7 @@ const KeyboardLayout: React.FC<KeyboardLayoutProps> = ({ activeKey, currentInput
                 getKeyBackground(key, !showSuccessEffect && isKeyActive(key))
               )}
             >
-              {key}
+              {uppercaseRoma ? key : key.toLowerCase()}
             </div>
           ))}
         </div>

@@ -16,7 +16,8 @@ function App() {
     isRandomMode: false,
     numStages: 3,
     showHands: true,
-    windowSize: 1
+    windowSize: 1,
+    uppercaseRoma: true
   });
 
   const containerRef = useRef<HTMLDivElement>(null);
