@@ -1,4 +1,8 @@
+# タイピングたんご！（https://manabi-time.com/typing/）
+# 検索エンジンに ぜんぶ見てもらってOK
+# ※ robots.txt はサイトの一番上（manabi-time.com/robots.txt）しか読まれません。
+#    ここに置いてあるのは、単体で公開したときの保険です。
 User-agent: *
 Allow: /
 
-Sitemap: https://tango01.manabi-time.com/sitemap.xml
+Sitemap: https://manabi-time.com/sitemap.xml

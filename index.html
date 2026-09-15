@@ -21,11 +21,248 @@
     <meta name="robots" content="index, follow" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="theme-color" content="#60A5FA" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:image:width" content="1000" />
+    <meta property="og:image:height" content="1000" />
+    <meta property="og:image:alt" content="タイピングたんご！のゲーム画面" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta name="twitter:image:alt" content="タイピングたんご！のゲーム画面" />
+    <meta name="application-name" content="タイピングたんご！" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="タイピングたんご！" />
     <title>タイピングたんご！ - 小学生向け日本語タイピング練習アプリ</title>
+    <!-- ページ下部の せつめい文（.seo-foot）の見た目。2026-09-15 追加。
+         ゲーム画面は縦100%なので、この文章は1画面ぶん下に置かれます。 -->
+    <style>
+      .seo-foot{ max-width:760px; margin:0 auto; padding:34px 20px 56px;
+        color:#4b5563; font-size:14px; line-height:1.9; text-align:left;
+        font-family:system-ui,-apple-system,"Segoe UI","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif; }
+      .seo-foot h1{ font-size:20px; font-weight:900; color:#1f2937; margin:0 0 12px; }
+      .seo-foot h2{ font-size:16px; font-weight:900; color:#1f2937; margin:26px 0 8px;
+        border-left:5px solid #2563eb; padding-left:10px; }
+      .seo-foot h3{ font-size:14.5px; font-weight:900; color:#1f2937; margin:18px 0 6px; }
+      .seo-foot p{ margin:0 0 10px; }
+      .seo-foot ul{ margin:0 0 10px; padding-left:1.2em; }
+      .seo-foot li{ margin-bottom:7px; }
+      .seo-foot b{ color:#1f2937; }
+      .seo-foot a{ color:#1d4ed8; }
+      .seo-foot .foot-note{ margin-top:20px; font-size:13px; opacity:.85; }
+      .seo-foot .foot-nav{ margin-top:16px; display:flex; flex-wrap:wrap; gap:8px 18px; font-size:13px; }
+      .seo-foot .foot-copy{ margin-top:12px; font-size:12px; opacity:.7; }
+    </style>
+
+    <!-- アプリそのものの構造化データ（無料の学習アプリだとGoogleに伝える） -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "タイピングたんご！",
+        "description": "タイピングたんご！は、小学生がローマ字で単語を打つ練習をするための無料の学習ゲームです。あ行から促音・拗音まで13ステージ。管理画面から練習する範囲を設定でき、学校の授業でも家庭でも使えます。",
+        "url": "https://manabi-time.com/typing/",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Web",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "JPY"
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "manabi-time"
+        },
+        "image": "https://manabi-time.com/typing/images/cat1.png",
+        "screenshot": "https://manabi-time.com/typing/images/cat1.png",
+        "inLanguage": "ja-JP"
+      }
+    </script>
+
+    <!-- よくある質問の構造化データ（検索結果に質問と答えが出ることがあります）。
+         下の <footer> の「よくある質問」と 同じ内容にしておくこと -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "タイピングたんご！は何年生から使えますか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "小学3年生からを想定しています。ローマ字を習い、キーの位置がだいたい分かってきたころが目安です。まだキーをさがすのに時間がかかるなら、タイピングきゃっとで1文字の練習から始めてください。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "タイピングきゃっととどうちがいますか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "出題の単位がちがいます。タイピングきゃっとはひらがな1文字、タイピングたんご！はことば（単語）です。キーさがしの練習がきゃっと、指を続けて動かす練習がたんご！だと考えてください。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "ローマ字がまだ覚えられていなくても使えますか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "画面にローマ字のヒントが出るので、見ながら打つことはできます。ただしローマ字そのものを覚えることが目的なら、ローマ字ぼうけんのほうが近道です。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "学校の授業で使ってもいいですか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "ご自由にお使いいただけます。連絡や申請はいりません。無料で、会員登録もインストールも必要ありません。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "スマートフォンでも使えますか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "キーボードで打つ練習なので、パソコン・Chromebook・タブレットなど画面の大きい端末むけです。スマートフォンの細い画面には対応していません。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "スコアや設定は保存されますか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "ハイスコアと設定は、お使いの端末のブラウザの中に保存されます。同じ端末・同じブラウザで開けば続きから遊べます。別の端末には引きつがれません。個人情報は一切取得していません。"
+            }
+          }
+        ]
+      }
+    </script>
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <!-- ================================================================
+         検索エンジン・保護者むけの せつめい（2026-09-15 追加）
+         このゲームは React で画面を作っているので、HTMLだけ読むと中身が空に
+         見えます。何ができるゲームなのかを、ふつうの文章でここに置いています。
+         ゲーム画面（#root）は縦100%なので、この文章は画面には かぶりません。
+
+         ぱぱへ：手で直すときは、下の見出し（<h2>）ごとに かたまりで
+         置いてあります。文言・順番はここを直せばそのまま反映されます。
+         ※「タイピングきゃっと」側にも同じ役割の文章があります。
+           同じ文章にすると Google に「同じページ」と見なされて両方が
+           下がるので、書き分けてあります（たんご＝ことば／きゃっと＝1文字）。
+         ================================================================ -->
+    <footer class="seo-foot">
+      <h1>小学生のタイピング練習「タイピングたんご！」</h1>
+      <p>「あい」「すいか」「おべんとう」のような<b>ことば（単語）</b>をローマ字で打つ、小学生のための無料タイピング練習ゲームです。あ行から始めて、習った行を1つずつ足していく<b>13ステージ</b>。登録もインストールもいりません。</p>
+
+      <h2>1文字が打てたら、つぎは「ことば」へ</h2>
+      <p>キーを1つずつ探して打てるようになっても、それだけでは文章は書けません。ことばを打つには、<b>次の文字を思い浮かべながら、指を止めずに動かし続ける</b>必要があります。1文字の練習と、ことばの練習は、じつは別のちからです。</p>
+      <p>「タイピングたんご！」が練習するのは、この<b>つなげて打つちから</b>です。出題は子どもが知っていることばだけ。意味のわからない文字列ではないので、頭の中で先読みしながら打つ練習になります。ここを通ると、文章入力がぐんと楽になります。</p>
+
+      <h2>とくちょう</h2>
+      <ul>
+        <li><b>習った行だけで出題できる</b>／ステージは「あ行まで」「か行まで」と積み上がる形です。学級で習ったところまでに範囲をそろえられます。</li>
+        <li><b>ホームポジションを忘れさせない</b>／4問に1回、<b>F と J</b>の練習がまざります。ことばに夢中になっても、指の置き場所に戻れます。</li>
+        <li><b>ゲーム性は控えめ</b>／派手な演出でテンションを上げるのではなく、<b>練習量がたまる</b>ことを優先した作りです。学校の授業時間にも使いやすい静かさにしています。</li>
+        <li><b>ローマ字ヒントを消せる</b>／画面のローマ字表示をOFFにすると<b>スコアが1.5倍</b>。「見ないで打つ」への橋渡しになります。</li>
+        <li><b>登録もインストールも不要</b>／ブラウザで開くだけ。無料で、広告もありません。</li>
+      </ul>
+
+      <h2>あそびかた（3ステップ）</h2>
+      <ul>
+        <li><b>1. 範囲をえらぶ</b>／左上の「管理」ボタン（または <b>V キー</b>）で、どの行まで出すかを選びます。</li>
+        <li><b>2. 出てきたことばを打つ</b>／画面のことばを、ローマ字で最後まで打ちます。制限時間内に打ち終えるとスコアが入ります。</li>
+        <li><b>3. 20問でステージクリア</b>／1ステージ20問。時間切れやミスでライフが1つ減り、0になるとゲームオーバー。そこまでのスコアがハイスコアとして残ります。</li>
+      </ul>
+      <p>1回のプレイはおよそ3分から5分です。授業の最初のウォーミングアップにも、家庭での短い練習にも使える長さにしています。</p>
+
+      <h2>収録している13ステージ</h2>
+      <p>ステージは「そこまでに出てきた行がぜんぶ出る」積み上げ式です。前に習った行を忘れないまま、少しずつ文字が増えていきます。</p>
+      <ul>
+        <li><b>1〜5</b>／あ行まで・か行まで・さ行まで・た行まで・な行まで（「あい」「かお」「すいか」「こたつ」「たぬき」など）</li>
+        <li><b>6〜10</b>／は行まで・ま行まで・や行まで・ら行まで・わ行まで（「ひなた」「もしもし」「ゆうやけ」「ろうそく」「かわいい」など）</li>
+        <li><b>11〜12</b>／濁音（が・ざ・だ・ば）まで・半濁音（ぱ）まで（「おんがく」「おべんとう」「ぷりん」など）</li>
+        <li><b>13</b>／促音・拗音まで（「はっぱ」「きょうしつ」「ぎゅうにゅう」「ちょこれーと」など）</li>
+      </ul>
+
+      <h2>管理画面でできること（先生・保護者の方へ）</h2>
+      <p>左上の「管理」ボタン、またはキーボードの <b>V キー</b>で管理画面が開きます。ここで調整できるのは次のとおりです。</p>
+      <ul>
+        <li>出題する範囲（あ行まで〜促音まで）</li>
+        <li>1回に続けて遊ぶステージ数</li>
+        <li>出題のしかた（順番どおり／ランダム）</li>
+        <li>画面キーボードと手の表示（見せる／見せない）</li>
+        <li>ローマ字ヒントの表示（消すとスコア1.5倍）</li>
+        <li>ローマ字の大文字・小文字</li>
+        <li>制限時間の速さ（速くするとボーナス倍率も上がります）</li>
+        <li>ゲーム画面の大きさ</li>
+      </ul>
+      <p>設定はその端末に残ります。学級の進度に合わせて範囲を決めてからお使いください。</p>
+
+      <h2>3つのゲームで、キーボードが得意になる</h2>
+      <p>「まなびタイム」では、子どもがつまずく順番にそって3つのゲームを用意しています。ことばが打てずに止まってしまう子は、ひとつ手前にもどると原因が見えます。</p>
+      <ul>
+        <li><b>STEP 1 ローマ字をおぼえる</b>／<a href="https://romaji.manabi-time.com/">ローマ字ぼうけん</a>（小学3年生〜）。「か＝ka」がすぐ出てこないなら、まずここから。すごろく形式でローマ字そのものを覚えます。</li>
+        <li><b>STEP 2 1文字を打つ</b>／<a href="https://manabi-time.com/typing/cat/">タイピングきゃっと</a>（小学2・3年生〜）。ひらがな1文字だけを打って、キーの位置を体で覚えます。ホームポジションの練習から始まります。</li>
+        <li><b>STEP 3 ことばを打つ</b>／このゲーム「タイピングたんご！」（小学3年生〜）。指を止めずに続けて動かす練習に進みます。</li>
+      </ul>
+
+      <h2>こんな場面で使えます</h2>
+      <ul>
+        <li><b>キーの位置をだいたい覚えたころに</b>／1文字は打てるのに文章になると止まる、という段階にちょうど合います。</li>
+        <li><b>授業のはじめの5分に</b>／範囲を決めておけば、開いてすぐ同じ練習ができます。</li>
+        <li><b>調べ学習やタイピングテストの前に</b>／ことば単位で打てるようになると、検索や入力の時間が短くなります。</li>
+        <li><b>家庭での短い練習に</b>／登録がいらないので、開いた日にすぐ始められます。</li>
+      </ul>
+
+      <h2>よくある質問</h2>
+
+      <h3>何年生から使えますか？</h3>
+      <p><b>小学3年生から</b>を想定しています。ローマ字を習い、キーの位置がだいたい分かってきたころが目安です。まだキーをさがすのに時間がかかるなら、<a href="https://manabi-time.com/typing/cat/">タイピングきゃっと</a>で1文字の練習から始めてください。</p>
+
+      <h3>「タイピングきゃっと」とどうちがいますか？</h3>
+      <p>出題の単位がちがいます。<a href="https://manabi-time.com/typing/cat/">タイピングきゃっと</a>は<b>ひらがな1文字</b>、こちらは<b>ことば（単語）</b>です。キーさがしの練習が「きゃっと」、指を続けて動かす練習が「たんご！」だと考えてください。</p>
+
+      <h3>ローマ字がまだ覚えられていません。使えますか？</h3>
+      <p>画面にローマ字のヒントが出るので、見ながら打つことはできます。ただし「ローマ字そのものを覚える」ことが目的なら、<a href="https://romaji.manabi-time.com/">ローマ字ぼうけん</a>のほうが近道です。</p>
+
+      <h3>学校の授業で使ってもいいですか？</h3>
+      <p><b>ご自由にお使いいただけます。</b>連絡や申請はいりません。無料で、会員登録もインストールも必要ありません。</p>
+
+      <h3>スマートフォンでも使えますか？</h3>
+      <p>キーボードで打つ練習なので、<b>パソコン・Chromebook・タブレットなど画面の大きい端末むけ</b>です。スマートフォンの細い画面には対応していません。</p>
+
+      <h3>スコアや設定は保存されますか？</h3>
+      <p>ハイスコアと設定は、<b>お使いの端末のブラウザの中</b>に保存されます。同じ端末・同じブラウザで開けば続きから遊べます。別の端末には引きつがれません。個人情報は一切取得していません。</p>
+
+      <p class="foot-note">対象：小学3年生〜／ローマ字入力で単語を打つ練習に。濁音・半濁音・促音・拗音まで段階的に。学校の授業でも、ご家庭でもお使いいただけます。</p>
+      <nav class="foot-nav">
+        <a href="https://manabi-time.com/">まなびタイム（教材いちらん）</a>
+        <a href="https://manabi-time.com/typing/cat/">タイピングきゃっと</a>
+        <a href="https://romaji.manabi-time.com/">ローマ字ぼうけん</a>
+        <a href="https://manabi-time.com/privacy/">プライバシーポリシー</a>
+      </nav>
+      <p class="foot-copy">運営：Skyvibe（代表 竹内 誠）／&copy; 2026 M.Takeuchi</p>
+    </footer>
+    <!-- ゲーム中に スペースキーや 矢印キーで ページが下へスクロールしてしまうのを
+         止める（2026-09-15 追加）。ページの下に せつめい文を置いたことで、
+         ページ自体が スクロールできる状態になったため。
+         スペースは ゲームの「はじめる／つぎのステージ」に使っているので、
+         ここで止めないと 押すたびに ゲーム画面が 上に消えてしまう。
+         ※ せつめい文まで スクロールしたあと（scrollY > 4）は ふつうに キーで動かせる。 -->
+    <script>
+      (function () {
+        var scrollKeys = { ' ': 1, 'Spacebar': 1, 'ArrowUp': 1, 'ArrowDown': 1,
+                           'PageUp': 1, 'PageDown': 1, 'Home': 1, 'End': 1 };
+        window.addEventListener('keydown', function (e) {
+          if (!scrollKeys[e.key]) return;
+          if (window.scrollY > 4) return;
+          var t = e.target;
+          if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+          e.preventDefault();
+        }, { passive: false });
+      })();
+    </script>
   </body>
+
 </html>
