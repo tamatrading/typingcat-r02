@@ -158,7 +158,7 @@ const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose }) => {
             3つ あるよ。うまく うてないときは、ひとつ 前に もどると コツが つかめる！
           </p>
           <NextGame
-            href="https://romaji.manabi-time.com/"
+            href="https://manabi-time.com/romaji/"
             emoji="🗺"
             step="STEP 1 ローマ字を おぼえる"
             title="ローマ字ぼうけん"
